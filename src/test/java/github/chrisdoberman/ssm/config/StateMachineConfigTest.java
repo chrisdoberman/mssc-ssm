@@ -33,4 +33,10 @@ class StateMachineConfigTest {
         System.out.println(sm.getState().toString());
     }
 
+    @Test
+    public void test() {
+        int a = 12344;
+
+    }
+
 }
