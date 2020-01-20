@@ -2,11 +2,9 @@ package github.chrisdoberman.ssm.config;
 
 import github.chrisdoberman.ssm.domain.PaymentEvent;
 import github.chrisdoberman.ssm.domain.PaymentState;
-import github.chrisdoberman.ssm.services.PaymentServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.statemachine.action.Action;
 import org.springframework.statemachine.config.EnableStateMachineFactory;
 import org.springframework.statemachine.config.StateMachineConfigurerAdapter;
@@ -18,7 +16,6 @@ import org.springframework.statemachine.listener.StateMachineListenerAdapter;
 import org.springframework.statemachine.state.State;
 
 import java.util.EnumSet;
-import java.util.Random;
 
 //using this instead of builder pattern
 @Configuration
@@ -82,8 +79,8 @@ public class StateMachineConfig extends StateMachineConfigurerAdapter<PaymentSta
                 .listener(adapter);
     }
 
-    // this could be its own bean and injected
-    public Guard<PaymentState, PaymentEvent> paymentIdGuard() {
+    // refactored to its own bean and injected
+/*    public Guard<PaymentState, PaymentEvent> paymentIdGuard() {
         return context -> {
             return context.getMessageHeader(PaymentServiceImpl.PAYMENT_ID_HEADER) != null;
         };
@@ -128,6 +125,6 @@ public class StateMachineConfig extends StateMachineConfigurerAdapter<PaymentSta
                         .build());
             }
         };
-    }
+    }*/
 
 }
