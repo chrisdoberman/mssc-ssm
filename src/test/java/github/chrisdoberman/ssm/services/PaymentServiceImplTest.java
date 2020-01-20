@@ -45,7 +45,6 @@ class PaymentServiceImplTest {
     }
 
     @Transactional
-    @Test
     @RepeatedTest(10)
     void authorizePayment() {
         Payment savedPayment = paymentService.newPayment(payment);
